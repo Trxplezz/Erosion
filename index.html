@@ -129,7 +129,7 @@ button{
     <div class="logo-text">EROSION</div>
 
     <div class="nav-links">
-      <button onclick="openCart()">CART (<span id="cart-count">0</span>)</button>
+      <button onclick="add('cart')">CART (<span id="cart-count">0</span>)</button>
       <button onclick="lock()">LOCK</button>
     </div>
   </div>
@@ -183,19 +183,29 @@ function add(item){
   document.getElementById("cart-count").textContent = count;
 }
 
-// LOCK SYSTEM
+// UNLOCK (stores memory)
 function unlock(){
   const p = document.getElementById("pass").value;
 
   if(p === "Erosion3107!"){
+    localStorage.setItem("erosionUnlocked", "true");
     document.getElementById("lock-screen").style.display = "none";
   } else {
     document.getElementById("error").textContent = "Wrong password";
   }
 }
 
+// LOCK (resets)
 function lock(){
+  localStorage.removeItem("erosionUnlocked");
   document.getElementById("lock-screen").style.display = "flex";
+}
+
+// CHECK ON LOAD
+window.onload = function(){
+  if(localStorage.getItem("erosionUnlocked") === "true"){
+    document.getElementById("lock-screen").style.display = "none";
+  }
 }
 </script>
 
