@@ -344,6 +344,20 @@
   </style>
 </head>
 <body>
+  <script>
+    const password = "1234";
+    document.body.style.display = "none";
+
+    let userPass = prompt("Enter password:");
+
+    if (userPass === password) {
+      document.body.style.display = "block";
+    } else {
+      alert("Wrong password");
+      document.body.innerHTML = "";
+    }
+  </script>
+
   <header>
     <div class="nav">
       <div class="logo-text">EROSION</div>
