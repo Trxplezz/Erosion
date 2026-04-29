@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EROSION</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
       --bg: #050505;
       --panel: #0b0b0b;
@@ -14,15 +19,30 @@
       --text: #ffffff;
       --muted: #aaaaaa;
     }
-    html { scroll-behavior: smooth; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
     }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    img { width: 100%; display: block; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
 
     header {
       position: fixed;
@@ -60,7 +80,9 @@
       flex-wrap: wrap;
     }
 
-    .btn, .card-btn, .close-btn {
+    .btn,
+    .card-btn,
+    .close-btn {
       background: transparent;
       color: white;
       border: 1px solid var(--line-strong);
@@ -68,10 +90,21 @@
       transition: 0.2s ease;
     }
 
-    .btn { padding: 11px 16px; letter-spacing: 2px; }
-    .card-btn { flex: 1; padding: 10px; font-size: 11px; letter-spacing: 2px; }
+    .btn {
+      padding: 11px 16px;
+      letter-spacing: 2px;
+    }
 
-    .btn:hover, .card-btn:hover, .close-btn:hover {
+    .card-btn {
+      flex: 1;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .btn:hover,
+    .card-btn:hover,
+    .close-btn:hover {
       background: white;
       color: black;
     }
@@ -85,7 +118,9 @@
       padding: 130px 20px 50px;
     }
 
-    .hero-inner { max-width: 760px; }
+    .hero-inner {
+      max-width: 760px;
+    }
 
     .hero img {
       max-width: 420px;
@@ -141,7 +176,9 @@
       cursor: pointer;
     }
 
-    .card-body { padding: 14px; }
+    .card-body {
+      padding: 14px;
+    }
 
     .card-title {
       font-size: 12px;
@@ -215,7 +252,9 @@
       transform: translate(-50%, -50%) scale(1);
     }
 
-    .modal-image-wrap { background: #0d0d0d; }
+    .modal-image-wrap {
+      background: #0d0d0d;
+    }
 
     .modal-image {
       width: 100%;
@@ -269,20 +308,317 @@
       height: 40px;
       font-size: 18px;
     }
+
+    @media (max-width: 950px) {
+      .products {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .product-modal {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-image {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
   </style>
 </head>
-
 <body>
+  <header>
+    <div class="nav">
+      <div class="logo-text">EROSION</div>
 
-<script>
-  const password = "1234";
-  document.body.style.display = "none";
+      <div class="nav-links">
+        <a href="#shop">SHOP</a>
+        <a href="#bundles">BUNDLES</a>
+        <a href="#shop">COLLECTIONS</a>
+      </div>
+    </div>
+  </header>
 
-  let userPass = prompt("Enter password:");
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="logo.jpg" alt="EROSION logo" />
+      <h1>BUILT FROM DECAY.</h1>
+      <p>
+        Modern technical streetwear. Shop single pieces or curated bundle sets.
+      </p>
+      <a class="btn" href="#shop">SHOP NOW</a>
+    </div>
+  </section>
 
-  if (userPass === password) {
-    document.body.style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-</script>
+  <section class="products-wrap" id="shop">
+    <div class="products-title">NEW ARRIVALS</div>
+
+    <div class="products">
+      <div class="card">
+        <button class="product-image-btn" onclick="openProduct('jacket')">
+          <img src="jacket.jpg" alt="Erosion Shell Jacket" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION SHELL JACKET</div>
+          <div class="price">$99.99</div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="openProduct('jacket')">VIEW</button>
+            <button class="card-btn" onclick="buyNow('jacket')">BUY NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="openProduct('tee')">
+          <img src="tee.jpg" alt="Erosion Tee" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION TEE</div>
+          <div class="price">$49.99</div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="openProduct('tee')">VIEW</button>
+            <button class="card-btn" onclick="buyNow('tee')">BUY NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="openProduct('pants')">
+          <img src="pants.jpg" alt="Erosion Sweatpants" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION SWEATPANTS</div>
+          <div class="price">$49.99</div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="openProduct('pants')">VIEW</button>
+            <button class="card-btn" onclick="buyNow('pants')">BUY NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="openProduct('beanie')">
+          <img src="beanie.jpg" alt="Erosion Beanie" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION BEANIE</div>
+          <div class="price">$35.99</div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="openProduct('beanie')">VIEW</button>
+            <button class="card-btn" onclick="buyNow('beanie')">BUY NOW</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-wrap" id="bundles">
+    <div class="products-title">BUNDLES</div>
+
+    <div class="products">
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleFullSet()">
+          <img src="fullset.jpg" alt="EROSION Full Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION FULL SET</div>
+          <div class="price">ALL 4 ITEMS</div>
+          <div class="bundle-note">
+            Shell Jacket + Tee + Sweatpants + Beanie
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleFullSet()">BUY FULL SET</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleCoreSet()">
+          <img src="teesweatpants.jpg" alt="EROSION Core Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION CORE SET</div>
+          <div class="price">TEE + SWEATPANTS</div>
+          <div class="bundle-note">
+            Erosion Tee + Erosion Sweatpants
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleCoreSet()">BUY SET</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleEssentialSet()">
+          <img src="beaniesweatpants.jpg" alt="EROSION Essential Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION ESSENTIAL SET</div>
+          <div class="price">BEANIE + TEE</div>
+          <div class="bundle-note">
+            Erosion Beanie + Erosion Tee
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleEssentialSet()">BUY SET</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleTripleSet()">
+          <img src="beaniesweatpantstee.jpg" alt="EROSION Triple Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION TRIPLE SET</div>
+          <div class="price">BEANIE + TEE + SWEATPANTS</div>
+          <div class="bundle-note">
+            Erosion Beanie + Erosion Tee + Erosion Sweatpants
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleTripleSet()">BUY SET</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © EROSION
+  </footer>
+
+  <div id="overlay" class="overlay" onclick="closeProduct()"></div>
+
+  <div id="product-modal" class="product-modal">
+    <button class="close-btn" onclick="closeProduct()">×</button>
+
+    <div class="modal-image-wrap">
+      <img id="modal-image" class="modal-image" src="" alt="" />
+    </div>
+
+    <div class="modal-content">
+      <div class="modal-label">EROSION / PRODUCT VIEW</div>
+      <h2 id="modal-title" class="modal-title"></h2>
+      <div id="modal-price" class="modal-price"></div>
+      <p id="modal-desc" class="modal-desc"></p>
+
+      <div class="modal-actions">
+        <button class="btn" id="modal-buy-btn">BUY NOW</button>
+        <button class="btn" onclick="closeProduct()">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const products = {
+      jacket: {
+        id: "jacket",
+        name: "EROSION SHELL JACKET",
+        price: 99.99,
+        image: "jacket.jpg",
+        desc: "Technical outerwear with a dark minimal silhouette, weather-ready construction, and a sharp structured shape."
+      },
+      tee: {
+        id: "tee",
+        name: "EROSION TEE",
+        price: 49.99,
+        image: "tee.jpg",
+        desc: "Washed grey tee with a worn-in feel, soft structure, and understated EROSION identity."
+      },
+      pants: {
+        id: "pants",
+        name: "EROSION SWEATPANTS",
+        price: 49.99,
+        image: "pants.jpg",
+        desc: "Cotton uncuffed sweatpants with a relaxed fit, clean drape, and everyday heavy-weight comfort."
+      },
+      beanie: {
+        id: "beanie",
+        name: "EROSION BEANIE",
+        price: 35.99,
+        image: "beanie.jpg",
+        desc: "Minimal knit beanie with bold EROSION branding and a darker industrial finish."
+      }
+    };
+
+    function formatPrice(value) {
+      return "$" + Number(value).toFixed(2);
+    }
+
+    function buyNow(productId) {
+      const links = {
+        jacket: "https://buy.stripe.com/28E3cv2qj67M7GpbXY0VO03",
+        tee: "https://buy.stripe.com/5kQdR98OHbs6aSB3rs0VO02",
+        pants: "https://buy.stripe.com/00w5kD7KD67M4ud8LM0VO01",
+        beanie: "https://buy.stripe.com/5kQ8wP9SL67Md0Jgee0VO00"
+      };
+
+      if (links[productId]) {
+        window.location.href = links[productId];
+      }
+    }
+
+    function buyBundleFullSet() {
+      window.location.href = "https://buy.stripe.com/8x2aEX9SLcwad0J7HI0VO07";
+    }
+
+    function buyBundleCoreSet() {
+      window.location.href = "https://buy.stripe.com/bJecN50ibeEi6Cl8LM0VO06";
+    }
+
+    function buyBundleEssentialSet() {
+      window.location.href = "https://buy.stripe.com/8x24gzd4X7bQgcV9PQ0VO05";
+    }
+
+    function buyBundleTripleSet() {
+      window.location.href = "https://buy.stripe.com/eVq4gzd4X3ZE1i17HI0VO04";
+    }
+
+    function openOverlay() {
+      document.getElementById("overlay").classList.add("show");
+    }
+
+    function closeOverlay() {
+      document.getElementById("overlay").classList.remove("show");
+    }
+
+    function openProduct(productId) {
+      const product = products[productId];
+      if (!product) return;
+
+      document.getElementById("modal-image").src = product.image;
+      document.getElementById("modal-image").alt = product.name;
+      document.getElementById("modal-title").textContent = product.name;
+      document.getElementById("modal-price").textContent = formatPrice(product.price);
+      document.getElementById("modal-desc").textContent = product.desc;
+      document.getElementById("modal-buy-btn").onclick = function () {
+        buyNow(productId);
+      };
+
+      document.getElementById("product-modal").classList.add("show");
+      openOverlay();
+    }
+
+    function closeProduct() {
+      document.getElementById("product-modal").classList.remove("show");
+      closeOverlay();
+    }
+  </script>
+</body>
+</html>
