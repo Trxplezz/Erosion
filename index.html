@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EROSION</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#050505;
+  color:white;
+}
+
+img{width:100%;display:block;}
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.9);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:1000;
+}
+
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:18px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo-text{
+  letter-spacing:6px;
+  font-size:14px;
+}
+
+.nav-links{
+  display:flex;
+  gap:20px;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+button{
+  background:none;
+  border:1px solid white;
+  color:white;
+  padding:8px 12px;
+  cursor:pointer;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding-top:100px;
+}
+
+.hero img{
+  max-width:400px;
+  margin-bottom:20px;
+}
+
+.products{
+  max-width:1200px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  padding:0 20px;
+}
+
+.card{
+  background:#111;
+  padding:10px;
+}
+
+.price{color:#aaa;margin-top:5px;}
+
+.cart-btn{
+  margin-top:10px;
+  width:100%;
+}
+
+#lock-screen{
+  position:fixed;
+  inset:0;
+  background:#050505;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+#lock-screen input{
+  padding:10px;
+  margin:10px;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+}
+
+#lock-screen button{
+  padding:10px 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen">
+  <h2>EROSION ACCESS</h2>
+  <input id="pass" type="password" placeholder="Enter password">
+  <button onclick="unlock()">ENTER</button>
+  <p id="error" style="color:red;"></p>
+</div>
+
+<header>
+  <div class="nav">
+    <div class="logo-text">EROSION</div>
+
+    <div class="nav-links">
+      <button onclick="openCart()">CART (<span id="cart-count">0</span>)</button>
+      <button onclick="lock()">LOCK</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <img src="logo.jpg">
+    <h1>BUILT FROM DECAY.</h1>
+  </div>
+</section>
+
+<section class="products">
+
+  <div class="card">
+    <img src="jacket.jpg">
+    <div>JACKET</div>
+    <div class="price">$99.99</div>
+    <button class="cart-btn" onclick="add('jacket')">ADD</button>
+  </div>
+
+  <div class="card">
+    <img src="tee.jpg">
+    <div>TEE</div>
+    <div class="price">$49.99</div>
+    <button class="cart-btn" onclick="add('tee')">ADD</button>
+  </div>
+
+  <div class="card">
+    <img src="pants.jpg">
+    <div>PANTS</div>
+    <div class="price">$49.99</div>
+    <button class="cart-btn" onclick="add('pants')">ADD</button>
+  </div>
+
+  <div class="card">
+    <img src="beanie.jpg">
+    <div>BEANIE</div>
+    <div class="price">$49.99</div>
+    <button class="cart-btn" onclick="add('beanie')">ADD</button>
+  </div>
+
+</section>
+
+<script>
+let count = 0;
+
+// CART
+function add(item){
+  count++;
+  document.getElementById("cart-count").textContent = count;
+}
+
+// LOCK SYSTEM
+function unlock(){
+  const p = document.getElementById("pass").value;
+
+  if(p === "Erosion3107!"){
+    document.getElementById("lock-screen").style.display = "none";
+  } else {
+    document.getElementById("error").textContent = "Wrong password";
+  }
+}
+
+function lock(){
+  document.getElementById("lock-screen").style.display = "flex";
+}
+</script>
+
+</body>
+</html>
