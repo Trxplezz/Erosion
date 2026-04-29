@@ -14,7 +14,6 @@
     :root {
       --bg: #050505;
       --panel: #0b0b0b;
-      --panel-2: #111111;
       --line: rgba(255,255,255,0.08);
       --line-strong: rgba(255,255,255,0.18);
       --text: #ffffff;
@@ -36,8 +35,7 @@
       text-decoration: none;
     }
 
-    button,
-    input {
+    button {
       font: inherit;
     }
 
@@ -65,6 +63,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .logo-text {
@@ -81,13 +80,9 @@
       flex-wrap: wrap;
     }
 
-    .nav-btn,
     .btn,
     .card-btn,
-    .qty-btn,
-    .remove-btn,
-    .close-btn,
-    .checkout-btn {
+    .close-btn {
       background: transparent;
       color: white;
       border: 1px solid var(--line-strong);
@@ -95,20 +90,21 @@
       transition: 0.2s ease;
     }
 
-    .nav-btn,
-    .btn,
-    .checkout-btn {
+    .btn {
       padding: 11px 16px;
       letter-spacing: 2px;
     }
 
-    .nav-btn:hover,
+    .card-btn {
+      flex: 1;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
     .btn:hover,
     .card-btn:hover,
-    .qty-btn:hover,
-    .remove-btn:hover,
-    .close-btn:hover,
-    .checkout-btn:hover {
+    .close-btn:hover {
       background: white;
       color: black;
     }
@@ -195,16 +191,17 @@
       margin-bottom: 14px;
     }
 
+    .bundle-note {
+      color: #888;
+      font-size: 11px;
+      margin-top: 6px;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
     .card-buttons {
       display: flex;
       gap: 10px;
-    }
-
-    .card-btn {
-      flex: 1;
-      padding: 10px;
-      font-size: 11px;
-      letter-spacing: 2px;
     }
 
     footer {
@@ -231,8 +228,7 @@
       pointer-events: auto;
     }
 
-    .product-modal,
-    .checkout-modal {
+    .product-modal {
       position: fixed;
       top: 50%;
       left: 50%;
@@ -246,18 +242,14 @@
       z-index: 2100;
       max-height: 90vh;
       overflow: auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
     }
 
-    .product-modal.show,
-    .checkout-modal.show {
+    .product-modal.show {
       opacity: 1;
       pointer-events: auto;
       transform: translate(-50%, -50%) scale(1);
-    }
-
-    .product-modal {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
     }
 
     .modal-image-wrap {
@@ -317,180 +309,6 @@
       font-size: 18px;
     }
 
-    .cart-panel {
-      position: fixed;
-      top: 0;
-      right: -430px;
-      width: min(430px, 100vw);
-      height: 100vh;
-      background: #080808;
-      border-left: 1px solid var(--line);
-      z-index: 2200;
-      transition: right 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cart-panel.show {
-      right: 0;
-    }
-
-    .cart-header {
-      padding: 22px 20px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      letter-spacing: 2px;
-      font-size: 13px;
-    }
-
-    .cart-items {
-      flex: 1;
-      overflow: auto;
-      padding: 14px;
-    }
-
-    .cart-empty {
-      color: var(--muted);
-      padding: 20px 6px;
-      line-height: 1.6;
-    }
-
-    .cart-item {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 12px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      margin-bottom: 12px;
-      padding: 10px;
-    }
-
-    .cart-item img {
-      width: 72px;
-      height: 90px;
-      object-fit: cover;
-    }
-
-    .cart-item-name {
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      margin-bottom: 8px;
-    }
-
-    .cart-item-price {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .qty-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .qty-btn {
-      width: 28px;
-      height: 28px;
-    }
-
-    .remove-btn {
-      padding: 8px 10px;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-    }
-
-    .cart-footer {
-      border-top: 1px solid var(--line);
-      padding: 18px;
-    }
-
-    .cart-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
-
-    .checkout-btn {
-      width: 100%;
-    }
-
-    .checkout-modal {
-      padding: 28px;
-      max-width: 680px;
-    }
-
-    .checkout-title {
-      font-size: 22px;
-      letter-spacing: 2px;
-      margin-bottom: 18px;
-    }
-
-    .checkout-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .checkout-grid.full {
-      grid-template-columns: 1fr;
-    }
-
-    .field label {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .field input {
-      width: 100%;
-      padding: 13px 12px;
-      background: #111;
-      border: 1px solid var(--line-strong);
-      color: white;
-    }
-
-    .checkout-summary {
-      margin: 18px 0 22px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-    }
-
-    .checkout-summary-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      color: var(--muted);
-    }
-
-    .checkout-summary-row:last-child {
-      margin-bottom: 0;
-      color: white;
-      font-weight: bold;
-    }
-
-    .checkout-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .message {
-      margin-top: 14px;
-      color: #9ad89a;
-      display: none;
-    }
-
     @media (max-width: 950px) {
       .products {
         grid-template-columns: 1fr 1fr;
@@ -502,10 +320,6 @@
 
       .modal-image {
         min-height: 320px;
-      }
-
-      .checkout-grid {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -536,10 +350,8 @@
 
       <div class="nav-links">
         <a href="#shop">SHOP</a>
+        <a href="#bundles">BUNDLES</a>
         <a href="#shop">COLLECTIONS</a>
-        <button class="nav-btn" onclick="openCart()">
-          CART (<span id="cart-count">0</span>)
-        </button>
       </div>
     </div>
   </header>
@@ -549,8 +361,7 @@
       <img src="logo.jpg" alt="EROSION logo" />
       <h1>BUILT FROM DECAY.</h1>
       <p>
-        Modern technical streetwear. View each piece, add it to cart,
-        and move into checkout.
+        Modern technical streetwear. Shop single pieces or curated bundle sets.
       </p>
       <a class="btn" href="#shop">SHOP NOW</a>
     </div>
@@ -562,56 +373,126 @@
     <div class="products">
       <div class="card">
         <button class="product-image-btn" onclick="openProduct('jacket')">
-          <img src="jacket.jpg" alt="Decay Shell Jacket" />
+          <img src="jacket.jpg" alt="Erosion Shell Jacket" />
         </button>
         <div class="card-body">
           <div class="card-title">EROSION SHELL JACKET</div>
           <div class="price">$99.99</div>
           <div class="card-buttons">
             <button class="card-btn" onclick="openProduct('jacket')">VIEW</button>
-            <button class="card-btn" onclick="addToCart('jacket')">ADD</button>
+            <button class="card-btn" onclick="buyNow('jacket')">BUY NOW</button>
           </div>
         </div>
       </div>
 
       <div class="card">
         <button class="product-image-btn" onclick="openProduct('tee')">
-          <img src="tee.jpg" alt="Vector Tee" />
+          <img src="tee.jpg" alt="Erosion Tee" />
         </button>
         <div class="card-body">
           <div class="card-title">EROSION TEE</div>
           <div class="price">$49.99</div>
           <div class="card-buttons">
             <button class="card-btn" onclick="openProduct('tee')">VIEW</button>
-            <button class="card-btn" onclick="addToCart('tee')">ADD</button>
+            <button class="card-btn" onclick="buyNow('tee')">BUY NOW</button>
           </div>
         </div>
       </div>
 
       <div class="card">
         <button class="product-image-btn" onclick="openProduct('pants')">
-          <img src="pants.jpg" alt="Drift Pant" />
+          <img src="pants.jpg" alt="Erosion Sweatpants" />
         </button>
         <div class="card-body">
           <div class="card-title">EROSION SWEATPANTS</div>
           <div class="price">$49.99</div>
           <div class="card-buttons">
             <button class="card-btn" onclick="openProduct('pants')">VIEW</button>
-            <button class="card-btn" onclick="addToCart('pants')">ADD</button>
+            <button class="card-btn" onclick="buyNow('pants')">BUY NOW</button>
           </div>
         </div>
       </div>
 
       <div class="card">
         <button class="product-image-btn" onclick="openProduct('beanie')">
-          <img src="beanie.jpg" alt="Silt Beanie" />
+          <img src="beanie.jpg" alt="Erosion Beanie" />
         </button>
         <div class="card-body">
           <div class="card-title">EROSION BEANIE</div>
-          <div class="price">$49.99</div>
+          <div class="price">$35.99</div>
           <div class="card-buttons">
             <button class="card-btn" onclick="openProduct('beanie')">VIEW</button>
-            <button class="card-btn" onclick="addToCart('beanie')">ADD</button>
+            <button class="card-btn" onclick="buyNow('beanie')">BUY NOW</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-wrap" id="bundles">
+    <div class="products-title">BUNDLES</div>
+
+    <div class="products">
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleFullSet()">
+          <img src="jacket.jpg" alt="EROSION Full Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION FULL SET</div>
+          <div class="price">ALL 4 ITEMS</div>
+          <div class="bundle-note">
+            Shell Jacket + Tee + Sweatpants + Beanie
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleFullSet()">BUY FULL SET</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleCoreSet()">
+          <img src="pants.jpg" alt="EROSION Core Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION CORE SET</div>
+          <div class="price">TEE + SWEATPANTS</div>
+          <div class="bundle-note">
+            Erosion Tee + Erosion Sweatpants
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleCoreSet()">BUY SET</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleEssentialSet()">
+          <img src="beanie.jpg" alt="EROSION Essential Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION ESSENTIAL SET</div>
+          <div class="price">BEANIE + TEE</div>
+          <div class="bundle-note">
+            Erosion Beanie + Erosion Tee
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleEssentialSet()">BUY SET</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="product-image-btn" onclick="buyBundleTripleSet()">
+          <img src="tee.jpg" alt="EROSION Triple Set" />
+        </button>
+        <div class="card-body">
+          <div class="card-title">EROSION TRIPLE SET</div>
+          <div class="price">BEANIE + TEE + SWEATPANTS</div>
+          <div class="bundle-note">
+            Erosion Beanie + Erosion Tee + Erosion Sweatpants
+          </div>
+          <div class="card-buttons">
+            <button class="card-btn" onclick="buyBundleTripleSet()">BUY SET</button>
           </div>
         </div>
       </div>
@@ -622,7 +503,7 @@
     © EROSION
   </footer>
 
-  <div id="overlay" class="overlay" onclick="closeAllPanels()"></div>
+  <div id="overlay" class="overlay" onclick="closeProduct()"></div>
 
   <div id="product-modal" class="product-modal">
     <button class="close-btn" onclick="closeProduct()">×</button>
@@ -638,96 +519,9 @@
       <p id="modal-desc" class="modal-desc"></p>
 
       <div class="modal-actions">
-        <button class="btn" id="modal-cart-btn">ADD TO CART</button>
+        <button class="btn" id="modal-buy-btn">BUY NOW</button>
         <button class="btn" onclick="closeProduct()">CLOSE</button>
       </div>
-    </div>
-  </div>
-
-  <aside id="cart-panel" class="cart-panel">
-    <div class="cart-header">
-      <div>YOUR CART</div>
-      <button class="close-btn" onclick="closeCart()">×</button>
-    </div>
-
-    <div id="cart-items" class="cart-items"></div>
-
-    <div class="cart-footer">
-      <div class="cart-row">
-        <span>ITEMS</span>
-        <span id="cart-items-total">0</span>
-      </div>
-      <div class="cart-row">
-        <span>SUBTOTAL</span>
-        <span id="cart-subtotal">$0.00</span>
-      </div>
-      <button class="checkout-btn" onclick="openCheckout()">PROCEED TO CHECKOUT</button>
-    </div>
-  </aside>
-
-  <div id="checkout-modal" class="checkout-modal">
-    <button class="close-btn" onclick="closeCheckout()">×</button>
-
-    <div class="checkout-title">CHECKOUT</div>
-
-    <div class="checkout-grid">
-      <div class="field">
-        <label>FIRST NAME</label>
-        <input id="first-name" type="text" />
-      </div>
-      <div class="field">
-        <label>LAST NAME</label>
-        <input id="last-name" type="text" />
-      </div>
-    </div>
-
-    <div class="checkout-grid full">
-      <div class="field">
-        <label>EMAIL</label>
-        <input id="email" type="email" />
-      </div>
-    </div>
-
-    <div class="checkout-grid full">
-      <div class="field">
-        <label>ADDRESS</label>
-        <input id="address" type="text" />
-      </div>
-    </div>
-
-    <div class="checkout-grid">
-      <div class="field">
-        <label>CITY</label>
-        <input id="city" type="text" />
-      </div>
-      <div class="field">
-        <label>ZIP CODE</label>
-        <input id="zip" type="text" />
-      </div>
-    </div>
-
-    <div class="checkout-summary">
-      <div class="checkout-summary-row">
-        <span>ITEMS</span>
-        <span id="checkout-items">0</span>
-      </div>
-      <div class="checkout-summary-row">
-        <span>SUBTOTAL</span>
-        <span id="checkout-subtotal">$0.00</span>
-      </div>
-      <div class="checkout-summary-row">
-        <span>TOTAL</span>
-        <span id="checkout-total">$0.00</span>
-      </div>
-    </div>
-
-    <div class="checkout-actions">
-      <button class="btn" onclick="placeOrder()">PLACE ORDER</button>
-      <button class="btn" onclick="closeCheckout()">CANCEL</button>
-    </div>
-
-    <div id="checkout-message" class="message">
-      Order placed. For real payments, connect Stripe or Shopify next.
     </div>
   </div>
 
@@ -735,67 +529,86 @@
     const products = {
       jacket: {
         id: "jacket",
-        name: "DECAY SHELL JACKET",
+        name: "EROSION SHELL JACKET",
         price: 99.99,
         image: "jacket.jpg",
         desc: "Technical outerwear with a dark minimal silhouette, weather-ready construction, and a sharp structured shape."
       },
       tee: {
         id: "tee",
-        name: "VECTOR TEE",
+        name: "EROSION TEE",
         price: 49.99,
         image: "tee.jpg",
         desc: "Washed grey tee with a worn-in feel, soft structure, and understated EROSION identity."
       },
       pants: {
         id: "pants",
-        name: "DRIFT PANT",
+        name: "EROSION SWEATPANTS",
         price: 49.99,
         image: "pants.jpg",
         desc: "Cotton uncuffed sweatpants with a relaxed fit, clean drape, and everyday heavy-weight comfort."
       },
       beanie: {
         id: "beanie",
-        name: "SILT BEANIE",
-        price: 49.99,
+        name: "EROSION BEANIE",
+        price: 35.99,
         image: "beanie.jpg",
         desc: "Minimal knit beanie with bold EROSION branding and a darker industrial finish."
       }
     };
 
-    let cart = JSON.parse(localStorage.getItem("erosionCart")) || [];
-
-    function saveCart() {
-      localStorage.setItem("erosionCart", JSON.stringify(cart));
-    }
-
     function formatPrice(value) {
       return "$" + Number(value).toFixed(2);
+    }
+
+    function buyNow(productId) {
+      const links = {
+        jacket: "https://buy.stripe.com/28E3cv2qj67M7GpbXY0VO03",
+        tee: "https://buy.stripe.com/5kQdR98OHbs6aSB3rs0VO02",
+        pants: "https://buy.stripe.com/00w5kD7KD67M4ud8LM0VO01",
+        beanie: "https://buy.stripe.com/5kQ8wP9SL67Md0Jgee0VO00"
+      };
+
+      if (links[productId]) {
+        window.location.href = links[productId];
+      }
+    }
+
+    function buyBundleFullSet() {
+      window.location.href = "https://buy.stripe.com/8x2aEX9SLcwad0J7HI0VO07";
+    }
+
+    function buyBundleCoreSet() {
+      window.location.href = "https://buy.stripe.com/bJecN50ibeEi6Cl8LM0VO06";
+    }
+
+    function buyBundleEssentialSet() {
+      window.location.href = "https://buy.stripe.com/8x24gzd4X7bQgcV9PQ0VO05";
+    }
+
+    function buyBundleTripleSet() {
+      window.location.href = "https://buy.stripe.com/eVq4gzd4X3ZE1i17HI0VO04";
     }
 
     function openOverlay() {
       document.getElementById("overlay").classList.add("show");
     }
 
-    function closeOverlayIfNeeded() {
-      const cartOpen = document.getElementById("cart-panel").classList.contains("show");
-      const productOpen = document.getElementById("product-modal").classList.contains("show");
-      const checkoutOpen = document.getElementById("checkout-modal").classList.contains("show");
-
-      if (!cartOpen && !productOpen && !checkoutOpen) {
-        document.getElementById("overlay").classList.remove("show");
-      }
+    function closeOverlay() {
+      document.getElementById("overlay").classList.remove("show");
     }
 
     function openProduct(productId) {
       const product = products[productId];
+      if (!product) return;
+
       document.getElementById("modal-image").src = product.image;
       document.getElementById("modal-image").alt = product.name;
       document.getElementById("modal-title").textContent = product.name;
       document.getElementById("modal-price").textContent = formatPrice(product.price);
       document.getElementById("modal-desc").textContent = product.desc;
-      document.getElementById("modal-cart-btn").onclick = function () {
-        addToCart(productId);
+      document.getElementById("modal-buy-btn").onclick = function () {
+        buyNow(productId);
       };
 
       document.getElementById("product-modal").classList.add("show");
@@ -804,182 +617,8 @@
 
     function closeProduct() {
       document.getElementById("product-modal").classList.remove("show");
-      closeOverlayIfNeeded();
+      closeOverlay();
     }
-
-    function openCart() {
-      document.getElementById("cart-panel").classList.add("show");
-      openOverlay();
-    }
-
-    function closeCart() {
-      document.getElementById("cart-panel").classList.remove("show");
-      closeOverlayIfNeeded();
-    }
-
-    function openCheckout() {
-      if (cart.length === 0) {
-        alert("Your cart is empty.");
-        return;
-      }
-
-      updateCheckoutUI();
-      document.getElementById("checkout-message").style.display = "none";
-      document.getElementById("checkout-modal").classList.add("show");
-      openOverlay();
-    }
-
-    function closeCheckout() {
-      document.getElementById("checkout-modal").classList.remove("show");
-      closeOverlayIfNeeded();
-    }
-
-    function closeAllPanels() {
-      closeProduct();
-      closeCart();
-      closeCheckout();
-    }
-
-    function addToCart(productId) {
-      const existing = cart.find(item => item.id === productId);
-
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ id: productId, qty: 1 });
-      }
-
-      saveCart();
-      updateCartUI();
-      openCart();
-    }
-
-    function increaseQty(productId) {
-      const item = cart.find(item => item.id === productId);
-      if (item) {
-        item.qty += 1;
-        saveCart();
-        updateCartUI();
-        updateCheckoutUI();
-      }
-    }
-
-    function decreaseQty(productId) {
-      const item = cart.find(item => item.id === productId);
-      if (!item) return;
-
-      item.qty -= 1;
-
-      if (item.qty <= 0) {
-        cart = cart.filter(i => i.id !== productId);
-      }
-
-      saveCart();
-      updateCartUI();
-      updateCheckoutUI();
-    }
-
-    function removeItem(productId) {
-      cart = cart.filter(item => item.id !== productId);
-      saveCart();
-      updateCartUI();
-      updateCheckoutUI();
-    }
-
-    function updateCartUI() {
-      const cartItems = document.getElementById("cart-items");
-      const cartCount = document.getElementById("cart-count");
-      const itemsTotal = document.getElementById("cart-items-total");
-      const subtotal = document.getElementById("cart-subtotal");
-
-      cartItems.innerHTML = "";
-
-      if (cart.length === 0) {
-        cartItems.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
-      } else {
-        cart.forEach(item => {
-          const product = products[item.id];
-          const row = document.createElement("div");
-          row.className = "cart-item";
-
-          row.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <div>
-              <div class="cart-item-name">${product.name}</div>
-              <div class="cart-item-price">${formatPrice(product.price)}</div>
-              <div class="qty-controls">
-                <button class="qty-btn" onclick="decreaseQty('${product.id}')">-</button>
-                <span>${item.qty}</span>
-                <button class="qty-btn" onclick="increaseQty('${product.id}')">+</button>
-              </div>
-              <button class="remove-btn" onclick="removeItem('${product.id}')">REMOVE</button>
-            </div>
-          `;
-
-          cartItems.appendChild(row);
-        });
-      }
-
-      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-      const totalPrice = cart.reduce((sum, item) => sum + (products[item.id].price * item.qty), 0);
-
-      cartCount.textContent = totalItems;
-      itemsTotal.textContent = totalItems;
-      subtotal.textContent = formatPrice(totalPrice);
-    }
-
-    function updateCheckoutUI() {
-      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-      const totalPrice = cart.reduce((sum, item) => sum + (products[item.id].price * item.qty), 0);
-
-      const checkoutItems = document.getElementById("checkout-items");
-      const checkoutSubtotal = document.getElementById("checkout-subtotal");
-      const checkoutTotal = document.getElementById("checkout-total");
-
-      if (checkoutItems) checkoutItems.textContent = totalItems;
-      if (checkoutSubtotal) checkoutSubtotal.textContent = formatPrice(totalPrice);
-      if (checkoutTotal) checkoutTotal.textContent = formatPrice(totalPrice);
-    }
-
-    function placeOrder() {
-      const firstName = document.getElementById("first-name").value.trim();
-      const lastName = document.getElementById("last-name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const address = document.getElementById("address").value.trim();
-      const city = document.getElementById("city").value.trim();
-      const zip = document.getElementById("zip").value.trim();
-
-      if (cart.length === 0) {
-        alert("Your cart is empty.");
-        return;
-      }
-
-      if (!firstName || !lastName || !email || !address || !city || !zip) {
-        alert("Please fill out all checkout fields.");
-        return;
-      }
-
-      document.getElementById("checkout-message").style.display = "block";
-
-      cart = [];
-      saveCart();
-      updateCartUI();
-      updateCheckoutUI();
-
-      setTimeout(() => {
-        closeCheckout();
-        closeCart();
-        document.getElementById("first-name").value = "";
-        document.getElementById("last-name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("address").value = "";
-        document.getElementById("city").value = "";
-        document.getElementById("zip").value = "";
-      }, 1200);
-    }
-
-    updateCartUI();
-    updateCheckoutUI();
   </script>
 </body>
 </html>
